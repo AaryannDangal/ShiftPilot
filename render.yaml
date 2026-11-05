@@ -1,9 +1,9 @@
 services:
   - type: web
     name: shiftpilot-backend
-    runtime: docker
+    env: docker
     plan: free
-    dockerfile: Dockerfile.backend
+    dockerfilePath: Dockerfile.backend
     envVars:
       - key: SHIFTPILLOT_SECRET_KEY
         generate: true
