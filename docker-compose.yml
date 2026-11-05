@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "8000:8000"
+    environment:
+      - SHIFTPILLOT_SECRET_KEY=production-secret-key-change-me
+      - SHIFTPILLOT_DATABASE_URL=sqlite:///./shiftpilot.db
+      - SHIFTPILLOT_BACKEND_CORS_ORIGINS=http://localhost:3000
+    volumes:
+      - ./backend/shiftpilot.db:/app/shiftpilot.db
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    depends_on:
+      - backend

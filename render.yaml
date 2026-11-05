@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: shiftpilot-backend
+    runtime: docker
+    plan: free
+    dockerfile: Dockerfile.backend
+    envVars:
+      - key: SHIFTPILLOT_SECRET_KEY
+        generate: true
+      - key: SHIFTPILLOT_DATABASE_URL
+        value: sqlite:///./shiftpilot.db
+      - key: SHIFTPILLOT_BACKEND_CORS_ORIGINS
+        value: https://your-frontend-url-here.vercel.app
+    autoDeploy: true
