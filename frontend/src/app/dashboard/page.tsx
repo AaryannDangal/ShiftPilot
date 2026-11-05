@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useAuth } from "@/contexts/auth-context";
-import { Schedule, Shift } from "@/types";
+import { Schedule } from "@/types";
 import Link from "next/link";
 
 export default function DashboardPage() {
@@ -87,4 +87,5 @@ export default function DashboardPage() {
         )}
       </div>
     </div>
-  }
+  );
+}
