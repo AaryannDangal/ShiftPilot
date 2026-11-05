@@ -6,7 +6,7 @@ services:
     dockerfilePath: Dockerfile.backend
     envVars:
       - key: SHIFTPILLOT_SECRET_KEY
-        generate: true
+        value: "production-secret-key-change-me-123456"
       - key: SHIFTPILLOT_DATABASE_URL
         value: sqlite:///./shiftpilot.db
       - key: SHIFTPILLOT_BACKEND_CORS_ORIGINS
