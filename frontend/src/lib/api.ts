@@ -39,16 +39,17 @@ export async function login(data: LoginRequest): Promise<TokenResponse | null> {
 }
 
 export async function register(data: RegisterRequest): Promise<TokenResponse | null> {
-  const res = await fetch(`${API_URL}/api/v1/auth/register`, {
+  const params = new URLSearchParams({
+    business_name: data.businessName,
+    business_timezone: data.businessTimezone,
+    business_currency: data.businessCurrency,
+    user_email: data.userEmail,
+    user_password: data.userPassword,
+    user_full_name: data.userFullName,
+  });
+
+  const res = await fetch(`${API_URL}/api/v1/auth/register?${params.toString()}`, {
     method: "POST",
-    params: new URLSearchParams({
-      business_name: data.businessName,
-      business_timezone: data.businessTimezone,
-      business_currency: data.businessCurrency,
-      user_email: data.userEmail,
-      user_password: data.userPassword,
-      user_full_name: data.userFullName,
-    }).toString(),
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
   });
   if (!res.ok) return null;
