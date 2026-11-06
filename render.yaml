@@ -10,5 +10,5 @@ services:
       - key: SHIFTPILLOT_DATABASE_URL
         value: sqlite:///./shiftpilot.db
       - key: SHIFTPILLOT_BACKEND_CORS_ORIGINS
-        value: https://your-frontend-url-here.vercel.app
+        value: https://shift-pilot-seven.vercel.app,http://localhost:3000
     autoDeploy: true
